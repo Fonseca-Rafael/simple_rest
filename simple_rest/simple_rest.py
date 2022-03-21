@@ -6,6 +6,7 @@ import sys
 import json
 import uvicorn
 import os
+import pkg_resources
 
 app = FastAPI()
 
@@ -19,7 +20,8 @@ filename = ""
 if "SIMPLE_REST_INPUT" in os.environ:
     filename = os.environ.get("SIMPLE_REST_INPUT")
 else:
-    filename = "./data.in"
+    resource_path = '/'.join(('./', 'data.in'))
+    filename = resource_path
 
 try:
     with open(filename) as f:
