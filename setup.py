@@ -23,5 +23,4 @@ setup(name='simple_rest',
                           'starlette'],
       test_suite='nose.collector',
       tests_require=['nose-py3'],
-      zip_safe=False,
       include_package_data=True)
