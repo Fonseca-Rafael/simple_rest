@@ -23,6 +23,8 @@ else:
     resource_path = '/'.join(('./', 'data.in'))
     filename = resource_path
 
+print("filename", filename)
+
 try:
     with open(filename) as f:
         data = f.read()
