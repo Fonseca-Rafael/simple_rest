@@ -19,7 +19,7 @@ filename = ""
 if "SIMPLE_REST_INPUT" in os.environ:
     filename = os.environ.get("SIMPLE_REST_INPUT")
 else:
-    filename = "data.in"
+    filename = "./data.in"
 
 try:
     with open(filename) as f:
