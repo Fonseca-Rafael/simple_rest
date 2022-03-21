@@ -20,10 +20,9 @@ filename = ""
 if "SIMPLE_REST_INPUT" in os.environ:
     filename = os.environ.get("SIMPLE_REST_INPUT")
 else:
-    resource_path = '/'.join(('./', 'data.in'))
-    filename = resource_path
-
-print("filename", filename)
+    resource_package = __name__
+    resource_path = '/'.join(('.', 'data.in'))
+    filename = pkg_resources.resource_filename(resource_package, resource_path)
 
 try:
     with open(filename) as f:
