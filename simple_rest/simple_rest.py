@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from typing import Optional
 import sys
 import json
@@ -34,11 +34,15 @@ except (ValueError, TypeError, FileNotFoundError):
 
 # returns associative array
 @app.get("/")
-async def read_item(item: Optional[str] = "Undefined"):
+async def read_item(response: Response, item: Optional[str] = "Undefined"):
     item = item.lower()
+    value = "Not Found"
+
     if item in INPUT_DICT:
-        return {item:INPUT_DICT[item]}
-    return {item:"Not Found"}
+        value = INPUT_DICT[item]
+
+    response.headers[item] = value
+    return {item:value}
 
 def run():
     uvicorn.run("simple_rest:app", host="127.0.0.1", port=5000)
